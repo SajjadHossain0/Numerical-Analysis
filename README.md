@@ -1,4 +1,4 @@
-# Numerical-Analysis
+<div align="center"><h1>Numerical-Analysis</h1></div>
 
 # Bisection Method
 ![Screenshot 2024-12-19 230126](https://github.com/user-attachments/assets/43e9aa2c-b0d7-45ee-a056-137f0d4f8099)
