@@ -6,7 +6,7 @@
 # False Method
 ![Screenshot 2024-12-19 230149](https://github.com/user-attachments/assets/1b81cc62-11ef-4ed8-9bb7-d640dbd923d6)
 
-# New Raphson Method
+# Newton Raphson Method
 ![Screenshot 2024-12-19 230203](https://github.com/user-attachments/assets/8410b75e-bcd4-4eb6-a491-41725f861bbd)
 
 # Secant Method
