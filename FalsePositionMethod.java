@@ -2,32 +2,36 @@ import java.util.Scanner;
 
 public class FalsePositionMethod {
 
-    public static double function(double x) {
+    public static double f(double x) {
         return x * x * x - x - 1;
     }
 
     public static void falsePosition(double a, double b, double accuracy) {
 
-        if (function(a) * function(b) >= 0) {
-            System.out.println("Invalid initial guesses, no sign change in the interval [a, b].");
+        if(f(a) * f(b) >= 0){
+            System.out.println("Wrong value of a and b, please try again");
             return;
         }
 
         double c = a;
-        while (!(function(c) <= accuracy && function(c) >= -accuracy)) {
+        int iteration = 0;
+        while (!(f(c) <= accuracy && f(c) >= -accuracy)) {
 
-            c = a - function(a) * (b - a) / (function(b) - function(a));
+            c = a - f(a) * (b - a) / (f(b) - f(a));
 
-            System.out.println("Current approximation of root: x = " + c + ", f(x) = " + function(c));
+            System.out.println("Current approximation of root: x = " + c + ", f(x) = " + f(c));
 
-            if (function(c) * function(a) < 0) {
+            if (f(a) * f(c) < 0) {
                 b = c;
             } else {
                 a = c;
             }
+            iteration++;
         }
 
         System.out.println("The root is approximately: x = " + c);
+        System.out.println("In the "+iteration+" iterations.");
+
     }
 
     public static void main(String[] args) {
