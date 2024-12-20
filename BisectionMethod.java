@@ -1,51 +1,56 @@
 import java.util.Scanner;
 
-public class BisectionMethod {
+class BisectionMethod {
 
-    public static double function(double x) {
-        return 2 * x * x * x - 3 * x * x - 2; 
+    public static double f(double x) {
+        return x*x*x - x - 1;
     }
 
-    public static void bisection(double a, double b, double accuracy) {
-        if (function(a) * function(b) >= 0) {
-            System.out.println("Invalid initial guesses, no sign change in the interval [a, b].");
+    public static void bisection(double a, double b, double accuraccy){
+        if(f(a) * f(b) >= 0){
+            System.out.println("Wrong value of a and b, please try again");
             return;
         }
 
         double c = a;
-        while ((b - a) >= accuracy) {  
+        int iteration = 0;
 
+        while(!(f(c) <= accuraccy && f(c) >= -accuraccy)){
             c = (a + b) / 2;
 
-            if (function(c) == 0.0) {
+            System.out.println("Current Approximate root c = "+c+", f(c) = "+f(c));
+
+            if (f(c) == 0.0){
                 break;
             }
-
-            if (function(c) * function(a) < 0) {
+            else if (f(a) * f(c) < 0){
                 b = c;
-            } else {
+            }
+            else{
                 a = c;
             }
 
-            System.out.println("Current approximation of root of the function : x = " + c + ", f(x) = " + function(c));
+            iteration++;
         }
 
-        System.out.println("The root is approximately: x = " + c);
+        System.out.println("Approximate root found at c = "+c);
+        System.out.println("In the "+iteration+" iterations.");
+
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the initial guess for a: ");
-        double a = scanner.nextDouble();
+        Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter the initial guess for b: ");
-        double b = scanner.nextDouble();
-        System.out.print("Enter the initial guess for accuracy: ");
-        double accuracy = scanner.nextDouble();
+        System.out.print("Enter the value of a = ");
+        double a = input.nextDouble();
+        System.out.print("Enter the value of b = ");
+        double b = input.nextDouble();
+        System.out.print("Enter the value of accuracy = ");
+        double accuracy = input.nextDouble();
 
         bisection(a, b, accuracy);
 
-        scanner.close();
+        input.close();
     }
 }
