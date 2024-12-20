@@ -19,8 +19,8 @@ public class SecantMethod {
 
             System.out.printf("%d\t\t %.6f\t %.6f\t %.6f\t %.6f\n", iteration, a, b, c, f(c));
 
-            if (Math.abs(f(c)) <= accuracy) {
-                System.out.printf("Approximate root found at c =  %.6f\n", c);
+            if (f(c) <= accuracy && f(c) >= -accuracy) {
+                System.out.printf("Approximate root found at c = %.6f\n", c);
                 break;
             }
 
@@ -32,7 +32,6 @@ public class SecantMethod {
     }
 
     public static void main(String[] args) {
-
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter the initial guess of a = ");
